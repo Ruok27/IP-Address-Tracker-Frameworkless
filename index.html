@@ -10,7 +10,13 @@
   <link rel="stylesheet" href="style.css">
   <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300&display=swap" rel="stylesheet">
-
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+crossorigin=""/>
+<!-- Make sure you put this AFTER Leaflet's CSS -->
+<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+crossorigin=""></script>
   <title>Frontend Mentor | IP Address Tracker</title>
 
   <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
@@ -46,24 +52,38 @@
       <div id=refcard>
         <div id="IP" class="label">
           IP Address
+          <div id="IPValue">--</div>
         </div>
         <div id="Location" class="label">
           Location
+          <div id="locationValue">--</div>
         </div>
           <div id="timezone" class="label">
             Timezone
 
-            UTC
+            UTC <div id="timeZoneValue">--</div>
             <!-- add offset value dynamically using the API -->
           </div>
           <div id="ISP" class="label">
             ISP
+            <div id="ISPvalue">--</div>
           </div>
         </div>
       </div>
 
-      <div class="map">
-      </div>
+      <div id="mapid"></div>
+      <script type="text/javascript">
+        var map = L.map('mapid').setView([28.23211669921875, -26.050065042385917], 10);
+        L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+    maxZoom: 18,
+    id: 'mapbox/streets-v11',
+    tileSize: 512,
+    zoomOffset: -1,
+    accessToken: 'your.mapbox.access.token'
+}).addTo(mymap);
+        </script>
+      
 
     </div>
   </div>
