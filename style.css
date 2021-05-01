@@ -46,4 +46,6 @@ border-radius: 25px;
 z-index: 100;
 }
 
-#mapid { height: 180px; }
+#mapid { height: 180px;
+z-index: 0;
+}
